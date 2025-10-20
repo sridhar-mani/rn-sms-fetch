@@ -13,7 +13,6 @@ npm install rn-sms-fetch
 ```js
 import { readSms, type Sms } from 'react-native-rn-sms-fetch';
 
-// ...
 
 const result = await readSms();
 ```
