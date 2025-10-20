@@ -17,9 +17,7 @@ class RnSmsFetchModule(reactContext: ReactApplicationContext) :
     return NAME
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  override fun readSms(fitlerJson: String, promise:Promise): Unit {
+  override fun readSms(filterJson: String?, promise: Promise): Unit {
     try{
       val contentResolver = reactApplicationContext.contentResolver
 
@@ -39,7 +37,14 @@ val msg = WritableNativeMap()
 msg.putString("_id",getVal.getString(getVal.getColumnIndexOrThrow(Telephony.Sms._ID)))
 msg.putString("address",getVal.getString(getVal.getColumnIndexOrThrow(Telephony.Sms.ADDRESS)))
 msg.putString("body",getVal.getString(getVal.getColumnIndexOrThrow(Telephony.Sms.BODY)))
-msg.putDouble("date",getVal.getString(getVal.getColumnIndexOrThrow(Telephony.Sms.DATE)).toDouble())
+  val dateIndex = getVal.getColumnIndexOrThrow(Telephony.Sms.DATE)
+val dateLong = try {
+  getVal.getLong(dateIndex)
+} catch (e: Exception) {
+  val dateStr = getVal.getString(dateIndex)
+  dateStr?.toDoubleOrNull()?.toLong() ?: 0L
+}
+msg.putDouble("date", dateLong.toDouble())
 
 msgs.pushMap(msg)
 

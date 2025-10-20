@@ -8,7 +8,7 @@ export interface Sms {
 }
 
 export interface Spec extends TurboModule {
-  readSms(filterJson: string): Promise<Sms[]>;
+  readSms(filterJson?: string): Promise<Sms[]>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>(
