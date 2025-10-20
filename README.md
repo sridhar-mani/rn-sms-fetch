@@ -1,22 +1,24 @@
 # react-native-rn-sms-fetch
 
-a sms fetch for androicd new arch
+a sms fetch for android new arch
 
 ## Installation
 
 ```sh
-npm install react-native-rn-sms-fetch
+npm install rn-sms-fetch
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-rn-sms-fetch';
+import { readSms, type Sms } from 'react-native-rn-sms-fetch';
 
 // ...
 
-const result = multiply(3, 7);
+const result = await readSms();
 ```
+
+The res is a array of objects where each object is the message with their id, address, body and date.
 
 ## Contributing
 
