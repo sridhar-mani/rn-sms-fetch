@@ -1,6 +1,6 @@
 {
   "name": "rn-sms-fetch",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "a sms fetch for android for new arch",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
