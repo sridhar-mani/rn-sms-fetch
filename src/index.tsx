@@ -1,5 +1,14 @@
-import RnSmsFetch from './NativeRnSmsFetch';
+import RnSmsFetch, { type Sms } from './NativeRnSmsFetch';
 
-export function multiply(a: number, b: number): number {
-  return RnSmsFetch.multiply(a, b);
+export async function readSms(filter: object = {}): Promise<Sms[]> {
+  if (!RnSmsFetch)
+    throw new Error(
+      'Native module RnSmsFetch not found. Did you enable New Arch?'
+    );
+
+  const filterJson = JSON.stringify(filter);
+
+  return RnSmsFetch.readSms(filterJson);
 }
+
+export type { Sms };

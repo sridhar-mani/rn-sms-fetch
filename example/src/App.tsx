@@ -1,12 +1,21 @@
 import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-rn-sms-fetch';
-
-const result = multiply(3, 7);
+import { useEffect, useState } from 'react';
+import { readSms, type Sms } from '../../src/index';
 
 export default function App() {
+  const [sms, setSms] = useState<Sms[]>([]);
+
+  useEffect(() => {
+    readSms().then(setSms);
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      {sms.map((message) => (
+        <Text key={message._id}>
+          From: {message.address} - {message.body}
+        </Text>
+      ))}
     </View>
   );
 }

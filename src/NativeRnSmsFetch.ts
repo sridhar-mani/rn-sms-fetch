@@ -1,7 +1,16 @@
 import { TurboModuleRegistry, type TurboModule } from 'react-native';
 
-export interface Spec extends TurboModule {
-  multiply(a: number, b: number): number;
+export interface Sms {
+  _id: string;
+  address: string;
+  body: string;
+  date: number;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('RnSmsFetch');
+export interface Spec extends TurboModule {
+  readSms(filterJson: string): Promise<Sms[]>;
+}
+
+export default TurboModuleRegistry.getEnforcing<Spec>(
+  'RnSmsFetch'
+) as Spec | null;

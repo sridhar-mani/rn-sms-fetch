@@ -4,14 +4,11 @@ a sms fetch for androicd new arch
 
 ## Installation
 
-
 ```sh
 npm install react-native-rn-sms-fetch
 ```
 
-
 ## Usage
-
 
 ```js
 import { multiply } from 'react-native-rn-sms-fetch';
@@ -20,7 +17,6 @@ import { multiply } from 'react-native-rn-sms-fetch';
 
 const result = multiply(3, 7);
 ```
-
 
 ## Contributing
 
